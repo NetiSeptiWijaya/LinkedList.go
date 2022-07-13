@@ -1,0 +1,35 @@
+package main
+
+import (
+	"fmt"
+)
+
+type Node struct {
+	data int
+	next *Node
+}
+
+func (n *Node) AddNode(data int) {
+	newNode := Node{data, nil}
+	iter := n
+	for iter.next != nil {
+		iter = iter.next
+	}
+	iter.next = &newNode
+}
+
+func (n *Node) PrintNode() {
+	iter := n 
+	for iter != nil {
+		fmt.Println(iter.data)
+		iter = iter.next
+	}
+}
+
+func main() {
+	newNode := Node{10, nil}
+	newNode.AddNode(20)
+	newNode.AddNode(30)
+	newNode.AddNode(40)
+	newNode.PrintNode()
+}
